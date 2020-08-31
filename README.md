@@ -2,8 +2,6 @@
 
 Simple Python application which uses the "Random" Wikipedia API endpoint and the "Parse" API endpoint to retrieve article text
 
-
-
 ## Getting Started
 
 TODO
