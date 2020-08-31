@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="zjpiazza",
+    name="randopedia",
     version="0.0.1",
     author="Zachary Piazza",
     author_email="zjpiazza@gmail.com",
