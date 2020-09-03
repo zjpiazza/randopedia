@@ -26,7 +26,9 @@ pipeline {
         stage('upload') {
             steps {
                 echo 'Stage: Upload'
-                sh 'python -m twine upload --repository testpypi -u __token__ -p $TESTPYPI_API_KEY dist/*'
+                withEnv(["HOME=${env.WORKSPACE}"]) {
+                    sh 'python -m twine upload --repository testpypi -u __token__ -p $TESTPYPI_API_KEY dist/*'
+                }
             }
         }
     }
