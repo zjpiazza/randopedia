@@ -13,6 +13,11 @@ pipeline {
                 deleteDir()
             }
         }
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
         stage('test')  {
             steps {
                 echo 'Stage: Test'
