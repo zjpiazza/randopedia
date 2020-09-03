@@ -8,13 +8,16 @@ pipeline {
         TESTPYPI_API_KEY = credentials('testpypi-api-key')
     }
     stages {
+        stage('Clean Workspace') {
+            steps {
+                deleteDir()
+            }
+        }
         stage('test')  {
             steps {
                 echo 'Stage: Test'
-                withEnv(["HOME=${env.WORKSPACE}"]) {
-                    sh 'pip install -r requirements.txt --user --no-cache-dir'
-                    sh 'pip install twine --user --no-cache-dir'
-                }
+                sh 'pip install -r requirements.txt --user --no-cache-dir'
+                sh 'pip install twine --user --no-cache-dir'
             }
         }
         stage('build') {
@@ -26,9 +29,7 @@ pipeline {
         stage('upload') {
             steps {
                 echo 'Stage: Upload'
-                withEnv(["HOME=${env.WORKSPACE}"]) {
-                    sh 'python -m twine upload --repository testpypi -u __token__ -p $TESTPYPI_API_KEY dist/*'
-                }
+                sh 'python -m twine upload --repository testpypi -u __token__ -p $TESTPYPI_API_KEY dist/* --skip-existing'
             }
         }
     }
