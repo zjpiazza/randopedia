@@ -4,7 +4,7 @@ Simple Python application which uses the "Random" Wikipedia API endpoint and the
 
 ## Getting Started
 
-TODO
+TODO - Installation instructions
 
 ### Prerequisites
 
