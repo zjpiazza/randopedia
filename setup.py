@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="randopedia",
-    version="0.0.1",
+    version="0.0.2",
     author="Zachary Piazza",
     author_email="zjpiazza@gmail.com",
     description="Retrieve a random wikipedia article",
