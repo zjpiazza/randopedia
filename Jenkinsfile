@@ -26,7 +26,7 @@ pipeline {
         stage('upload') {
             steps {
                 echo 'Stage: Upload'
-                sh 'twine upload --repository testpypi -u __token__ -p $TESTPYPI_API_KEY dist/*'
+                sh 'python -m twine upload --repository testpypi -u __token__ -p $TESTPYPI_API_KEY dist/*'
             }
         }
     }
