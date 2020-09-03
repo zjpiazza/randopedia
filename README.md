@@ -4,7 +4,7 @@ Simple Python application which uses the "Random" Wikipedia API endpoint and the
 
 ## Getting Started
 
-TODO
+TODO - Installation instructions
 
 ### Prerequisites
 
@@ -70,3 +70,5 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+Webhook trigger...
