@@ -8,25 +8,25 @@ pipeline {
         TESTPYPI_API_KEY = credentials('testpypi-api-key')
     }
     stages {
-        stage('build') {
+        stage('Setup') {
             steps {
-                echo 'Stage: Build'
+                echo 'Stage: Setup'
                 sh 'pip install -r requirements.txt --user --no-cache-dir'
             }
         }
-        stage('test')  {
+        stage('Test')  {
             steps {
                 echo 'Stage: Test'
                 sh 'python -m pytest'
             }
         }
-        stage('build') {
+        stage('Build') {
             steps {
                 echo 'Stage: Build'
                 sh 'python setup.py sdist bdist_wheel'
             }
         }
-        stage('upload') {
+        stage('Upload') {
             steps {
                 echo 'Stage: Upload'
                 sh 'python -m twine upload --repository testpypi -u __token__ -p $TESTPYPI_API_KEY dist/* --skip-existing'
