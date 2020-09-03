@@ -1,10 +1,16 @@
 pipeline {
-    agent { docker { image 'python:3.7' } }
+    agent {
+        docker {
+            image 'python:3.7'
+        }
+    }
     stages {
         stage('test')  {
             steps {
                 echo 'Stage: Test'
-                sh 'pip install -r requirements.txt --user --no-cache-dir'
+                withEnv(["HOME=${env.WORKSPACE}"]) {
+                    sh 'pip install -r requirements.txt --user --no-cache-dir'
+                }
             }
         }
         stage('build') {
