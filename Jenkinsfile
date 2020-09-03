@@ -3,19 +3,19 @@ pipeline {
     stages {
         stage('test')  {
             steps {
-                echo 'Stage - Test'
+                echo 'Stage: Test'
                 sh 'pip install -r requirements.txt'
             }
         }
         stage('build') {
             steps {
-                echo 'Stage - Build'
+                echo 'Stage: Build'
                 sh 'python setup.py sdist bdist_wheel'
             }
         }
         stage('upload') {
             steps {
-                echo 'Stage - Upload'
+                echo 'Stage: Upload'
                 sh 'twine upload --repository testpypi -u __token__ -p $TESTPYPI_API_KEY dist/*'
             }
         }
