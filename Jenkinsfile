@@ -8,21 +8,16 @@ pipeline {
         TESTPYPI_API_KEY = credentials('testpypi-api-key')
     }
     stages {
-        stage('Clean Workspace') {
+        stage('build') {
             steps {
-                deleteDir()
-            }
-        }
-        stage('Checkout') {
-            steps {
-                checkout scm
+                echo 'Stage: Build'
+                sh 'pip install -r requirements.txt --user --no-cache-dir'
             }
         }
         stage('test')  {
             steps {
                 echo 'Stage: Test'
-                sh 'pip install -r requirements.txt --user --no-cache-dir'
-                sh 'pip install twine --user --no-cache-dir'
+                sh 'python -m pytest'
             }
         }
         stage('build') {
